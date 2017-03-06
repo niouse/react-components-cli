@@ -1,0 +1,21 @@
+{
+  "name": "react-component",
+  "version": "0.0.1",
+  "description": "A command-line tool to create react components with container, styles and test files",
+  "main": "index.js",
+  "scripts": {
+    "test": "test-react-component"
+  },
+  "bin": {
+    "react-component": "./index.js"
+  },
+  "keywords": [
+    "cli",
+    "react"
+  ],
+  "author": "Sébastien Pinard",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^2.9.0"
+  }
+}
