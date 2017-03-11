@@ -340,8 +340,9 @@ _____________________________________________COMPONENT TEMPLATE_________________
 _________________________________________________________________________________________________________________*/
 
 	render() {
+		const style=this.props.style || {width:"100%", height:"100%"}
 		return  (
-			<div style={{width:"100%", height:"100%"}}>
+			<div style={style}>
 				<${name} 
 					{...this.props}
 					styles={styles}
@@ -451,8 +452,9 @@ _____________________________________________COMPONENT TEMPLATE_________________
 _________________________________________________________________________________________________________________*/
 
 	render() {
+		const style=this.props.style || {width:"100%", height:"100%"}
 		return  (
-			<div style={{width:"100%", height:"100%"}}>
+			<div style={style}>
 				<${name} 
 					{...this.props}
 					styles={this.state.styles}
@@ -570,8 +572,9 @@ ________________________________________________________________________________
 _____________________________________________COMPONENT TEMPLATE____________________________________________________
 _________________________________________________________________________________________________________________*/
 	render() {
+		const style=this.props.style || {width:"100%", height:"100%"}
 		return  (
-			<div style={styles.container}>
+			<div style={style}>
 				{this.state.${collection} ? 
 					<${name} 
 						{...this.props}
