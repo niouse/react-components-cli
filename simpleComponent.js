@@ -31,8 +31,8 @@ import React, { Component } from 'react';
 //import { Router, Route, Link, IndexRoute, hashHistory, browserHistory, DefaultRoute, Redirect } from 'react-router';
 
 // EXTERNAL LIBS
-import moment from 'moment';
-import Radium from 'radium';
+//import moment from 'moment';
+//import Radium from 'radium';
 
 export default class  ${name} extends Component {
 
@@ -155,7 +155,6 @@ import Refresh from 'material-ui/svg-icons/navigation/refresh.js';
 import ImportExport from 'material-ui/svg-icons/communication/import-export.js';
 import Settings from 'material-ui/svg-icons/action/settings.js';
 import Save from 'material-ui/svg-icons/content/save.js';
-import SnackBar from 'material-ui/SnackBar';
 
 
 
@@ -260,6 +259,8 @@ import React, { Component } from 'react';
 //import PureRenderMixin from 'react-addons-pure-render-mixin';
 //import { Router, Route, Link, IndexRoute, hashHistory, browserHistory, DefaultRoute, Redirect } from 'react-router';
 
+// EXTERNAL LIBS
+
 import ${name} from "./${name}.jsx";
 
 import styles from "./${name}.styles.js";
@@ -362,6 +363,8 @@ import React, { Component } from 'react';
 //import PureRenderMixin from 'react-addons-pure-render-mixin';
 //import { Router, Route, Link, IndexRoute, hashHistory, browserHistory, DefaultRoute, Redirect } from 'react-router';
 
+// EXTERNAL LIBS
+
 import ${name} from "./${name}.jsx";
 
 import styles from "./${name}.styles.js";
@@ -452,7 +455,7 @@ ________________________________________________________________________________
 			<div style={{width:"100%", height:"100%"}}>
 				<${name} 
 					{...this.props}
-					styles={styles}
+					styles={this.state.styles}
 				/>
 			</div>
 		);
@@ -573,7 +576,7 @@ ________________________________________________________________________________
 					<${name} 
 						{...this.props}
 						${collection} = {this.state.${collection}}
-						styles={styles}
+						styles={this.state.styles}
 					/>:
 					<Loading />
 				}
