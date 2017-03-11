@@ -609,10 +609,11 @@ function writeStyles(name){
     var styles = `
 const styles=function(theme) {
    return ({
-		container : {
+	container : {
 
-		}
-	})
+	}
+   })
+}
 export default styles
 `
     return styles
