@@ -273,7 +273,7 @@ constructor(props){
 
 	this.state = {
 		canTest : false,
-		styles : styles(props.theme)
+		styles : styles(props.stylesOptions),
 	}
 
 
@@ -378,7 +378,7 @@ constructor(props){
 
 	this.state = {
 		canTest : false,
-		styles : styles(props.theme)
+		styles : styles(props.stylesOptions),
 	}
 
 
@@ -498,7 +498,7 @@ constructor(props){
 
 	this.state = {
 		canTest : false,
-		styles : styles(props.theme)
+		styles : styles(props.stylesOptions),
 	}
 
 	 this.autorun(()=>{          
@@ -613,14 +613,30 @@ if (Meteor.isServer) {
 
 function writeStyles(name){
     var styles = `
-const styles=function(theme) {
-   return ({
-	container : {
+const styles=function(options) {
+	
+   let theme = options.theme
+   let screenWith = options.screenWidth
+   let screenHeight = options.screenHeight
+   
+   let styles = {
+	   pc : {
+		   container : {
 
-	}
-   })
+			}
+	   },
+	   smartPhone : {
+		   container : {
+
+			}
+	   }
+   }
+   
+   return styles[options.device]
 }
+
 export default styles
+
 `
     return styles
 }
