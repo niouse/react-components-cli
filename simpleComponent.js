@@ -490,7 +490,7 @@ import styles from "./${name}.styles.js";
 import { ${collection}Mongo } from './../api/${collection}/${collection}.js';
 
 
-export default class  ${name}Container extends Component {
+export default class  ${name}Container extends Tracker.Component {
 
 constructor(props){
 	super(props);
