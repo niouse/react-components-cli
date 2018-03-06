@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 
 export default function ${name}_Styles_Service(computeStyles, defaultStyles, stylesOptions) {
     return (WrappedComponent) => {
-        var stylesOptionsSub
+        
 
         class $${name}_Styles_Service extends Component {
             constructor(props) {
@@ -21,11 +21,11 @@ export default function ${name}_Styles_Service(computeStyles, defaultStyles, sty
                 this.state = {
                     styles: computeStyles(defaultStyles, this.options, this.userStyles)
                 }
-
+		this.stylesOptionsSub
             }
             componentDidMount() {
                 if (this.props.stylesOptionsObs) {
-                    stylesOptionsSub = this.props.stylesOptionsObs.subscribe((x) => {
+                    this.stylesOptionsSub = this.props.stylesOptionsObs.subscribe((x) => {
                         this.setState({
                             styles: computeStyles(defaultStyles, x, this.userStyles)
                         })
@@ -38,8 +38,8 @@ export default function ${name}_Styles_Service(computeStyles, defaultStyles, sty
                 })
             }
             componentWillUnmount() {
-                if (stylesOptionsSub !== undefined) {
-                    stylesOptionsSub.unsubscribe()
+                if (this.stylesOptionsSub !== undefined) {
+                    this.stylesOptionsSub.unsubscribe()
                 }
             }
             render() {

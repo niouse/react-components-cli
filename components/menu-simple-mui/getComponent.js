@@ -1,6 +1,7 @@
 function getComponent(name, lowerName){
     
 var component = `
+
 // REACT DEPENDENCIES
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
@@ -18,15 +19,16 @@ import stylesOptions from "./styles/${lowerName}.styles-options.default.js";
 import computeStyles from "./styles/${lowerName}.compute-styles.js";
 import texts from "./text/${lowerName}.text.js";
 
+// MATERIAL COMPNENTS
+import RaisedButton from 'material-ui/RaisedButton';
 
 @Styles(computeStyles, stylesDefault, stylesOptions)
 @Api()
 @Texts(texts)
-@Template()
+@Template(RaisedButton)
 class ${name}_Component {}
 
 export default ${name}_Component
-
 `   
     return component
 }

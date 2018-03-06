@@ -1,20 +1,21 @@
 var fs = require("fs");
 
-var getApi = require('./getApi');
-var getApiTest = require('./getApiTest')
-var getComponent = require('./getComponent')
-var getComponentHOC = require('./getComponentHOC')
-var getComponentTest = require('./getComponentTest')
-var getComputeStyles = require('./getComputeStyles')
-var getDefaultStyles = require('./getDefaultStyles')
-var getDefaultStylesOptions = require('./getDefaultStylesOptions')
-var getStylesService = require('./getStylesService')
-var getStylesServiceTest = require('./getStylesServiceTest')
-var getTemplate = require('./getTemplate')
-var getTemplateTest = require('./getTemplateTest')
-var getText = require('./getText')
-var getTextService = require('./getTextService')
-var getTextServiceTest = require('./getTextServiceTest')
+var getApi = require('./get.search-menu-easy-mui.api');
+var getApiTest = require('./get.search-menu-easy-mui.api.test')
+var getComponent = require('./get.search-menu-easy-mui.component')
+var getComponentTest = require('./get.search-menu-easy-mui.component.test')
+var getComputeStyles = require('./get.search-menu-easy-mui.compute-styles')
+var getComponentHOC = require('./get.search-menu-easy-mui')
+var getMocks = require('./get.search-menu-easy-mui.mocks')
+var getDefaultStylesOptions = require('./get.search-menu-easy-mui.styles-options.default')
+var getDefaultStyles = require('./get.search-menu-easy-mui.styles.default')
+var getStylesService = require('./get.search-menu-easy-mui.styles.service')
+var getStylesServiceTest = require('./get.search-menu-easy-mui.styles.service.test')
+var getTemplate = require('./get.search-menu-easy-mui.template')
+var getTemplateTest = require('./get.search-menu-easy-mui.template.test')
+var getText = require('./get.search-menu-easy-mui.text')
+var getTextService = require('./get.search-menu-easy-mui.text.service')
+var getTextServiceTest = require('./get.search-menu-easy-mui.text.service.test')
 
 
 module.exports = function(name, lowerName){   
@@ -45,4 +46,5 @@ module.exports = function(name, lowerName){
 	fs.writeFileSync(process.cwd()+`/${lowerName}/test-files/${lowerName}.template.test.js`, getTemplateTest(name, lowerName));
 	fs.writeFileSync(process.cwd()+`/${lowerName}/test-files/${lowerName}.component.test.js`, getComponentTest(name, lowerName));
 	fs.writeFileSync(process.cwd()+`/${lowerName}/test-files/${lowerName}.text.service.test.js`, getTextServiceTest(name, lowerName));
+	fs.writeFileSync(process.cwd()+`/${lowerName}/test-files/${lowerName}.mocks.js`, getMocks(name, lowerName));
 }

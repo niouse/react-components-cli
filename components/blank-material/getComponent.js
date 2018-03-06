@@ -18,15 +18,16 @@ import stylesOptions from "./styles/${lowerName}.styles-options.default.js";
 import computeStyles from "./styles/${lowerName}.compute-styles.js";
 import texts from "./text/${lowerName}.text.js";
 
-
-@Styles(computeStyles, stylesDefault, stylesOptions)
-@Api()
-@Texts(texts)
-@Template()
-class ${name}_Component {}
-
-export default ${name}_Component
-
+export default function ${name}(){
+	return (wrappedComponent)=>{
+		@Styles(computeStyles, stylesDefault, stylesOptions)
+		@Texts(texts)
+		@Api()
+		@Template()
+		class ${name}_Component {}
+		return ${name}_Component
+	}
+}  
 `   
     return component
 }

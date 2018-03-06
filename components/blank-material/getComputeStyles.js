@@ -2,7 +2,11 @@ function getComputeStyles(name, lowerName){
     
 var component = `
 export default function ${name}_computeStyles(defaultStyles, stylesOptions, userStyles) {
-    let styles = Object.assign({}, defaultStyles);
+     var styles = {}
+	
+	for (var key in defaultStyles){
+		styles[key]=Object.assign({}, defaultStyles[key])
+	}
     // Overwrite styles according screen size or theme
     styles.title = {
         color: stylesOptions.theme.colors.primary

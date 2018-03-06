@@ -1,6 +1,8 @@
-function getStylesService(name, lowerName){
-    
+
+module.exports = function (name, lowerName){
+
 var component = `
+
 import { Meteor } from 'meteor/meteor';
 import React from 'react';
 import chai  from 'chai';
@@ -8,16 +10,16 @@ import { mount, shallow } from 'enzyme';
 import {expect} from 'chai';
 
 // SERVICES
-import Styles from "./../services/${lowerName}.styles.service.jsx";
+import Styles from "./../services/search-menu-easy-mui.styles.service.jsx";
 
 // STYLES
-import stylesDefault from "./../styles/${lowerName}.styles.default.js";
-import stylesOptions from "./../styles/${lowerName}.styles-options.default.js";
-import computeStyles from "./../styles/${lowerName}.compute-styles.js";
+import stylesDefault from "./../styles/search-menu-easy-mui.styles.default.js";
+import stylesOptions from "./../styles/search-menu-easy-mui.styles-options.default.js";
+import computeStyles from "./../styles/search-menu-easy-mui.compute-styles.js";
 
 if (Meteor.isServer) {
 
-    describe('@Styles (${lowerName}.styles.service.jsx)', function() {
+    describe('@Styles (search-menu-easy-mui.styles.service.jsx)', function() {
         before(function() {
             class _MockComponent extends React.Component {
                 render() {
@@ -31,7 +33,7 @@ if (Meteor.isServer) {
 
         describe('Return expected object', function() {
 
-            it("Return object with props.styles object, with at least a \\"container\\" key", function() {
+            it("Return object with props.styles object, with at least a \"container\" key", function() {
                 expect(wrapper.props().styles).to.not.be.undefined;
                 expect(wrapper.props().styles.container).to.not.be.undefined;
             });
@@ -51,12 +53,7 @@ if (Meteor.isServer) {
     });
 
 }
-    `
     
-    return component
+	`
+	return component
 }
-
-
-module.exports = getStylesService
-
-

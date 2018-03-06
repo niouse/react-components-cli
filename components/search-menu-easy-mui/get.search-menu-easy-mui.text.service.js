@@ -1,24 +1,30 @@
-function getTextService(name, lowerName){
-    
+
+module.exports = function (name, lowerName){
+
 var component = `
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-export default function ${name}_Text_Service(_text) {
+export default function ${lowerName}_Text_Service(_text) {
     return (WrappedComponent) => {
         let languageSub
-        class $${name}_Text_Service extends Component {
+        class $${lowerName}_Text_Service extends Component {
             constructor(props) {
                 super(props)
+				this.textVersion = props.textVersion || "default"
+				this.text = Object.assign({}, _text)
+				for (var key in this.text){
+					this.text[key]=this.setVersion(this.text[key], this.version)
+				}
                 this.state = {
-                    text: _text.en
+                    text: this.text.en
                 }
             }
             componentDidMount() {
                 if (this.props.languageObs) {
                     languageSub = this.props.languageObs.subscribe((x) => {
                         this.setState({
-                            text: _text[x]
+                            text: this.text[x]
                         })
                     })
                 }
@@ -30,9 +36,17 @@ export default function ${name}_Text_Service(_text) {
             }
             setLanguage(lng) {
                 this.setState({
-                    text: _text[lng]
+                    text: this.text[lng]
                 })
             }
+			
+			setVersion(obj, version){
+				let newObj = Object.assign({}, obj)
+				for (var key in newObj){
+					newObj[key]=newObj[key].default
+				}
+				return newObj
+			}
 
             render() {
                 return <WrappedComponent
@@ -42,19 +56,14 @@ export default function ${name}_Text_Service(_text) {
 				/>
             }
         }
-        $${name}_Text_Service.propTypes = {
+        $${lowerName}_Text_Service.propTypes = {
             languageObs: PropTypes.object,
             languageNext: PropTypes.func,
+			textVersion : PropTypes.func,
         };
-        return $${name}_Text_Service
+        return $${lowerName}_Text_Service
     }
+}    
+	`
+	return component
 }
-       
-    `
-    return component
-}
-
-
-module.exports = getTextService
-
-

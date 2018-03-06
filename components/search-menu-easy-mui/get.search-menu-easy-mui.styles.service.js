@@ -1,14 +1,16 @@
-function getStylesService(name, lowerName){
-    
+
+module.exports = function (name, lowerName){
+
 var component = `
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-export default function ${name}_Styles_Service(computeStyles, defaultStyles, stylesOptions) {
+export default function ${lowerName}_Styles_Service(computeStyles, defaultStyles, stylesOptions) {
     return (WrappedComponent) => {
         var stylesOptionsSub
 
-        class $${name}_Styles_Service extends Component {
+        class $${lowerName}_Styles_Service extends Component {
             constructor(props) {
                 super(props)
                 this.options = props.stylesOptions || stylesOptions
@@ -21,11 +23,11 @@ export default function ${name}_Styles_Service(computeStyles, defaultStyles, sty
                 this.state = {
                     styles: computeStyles(defaultStyles, this.options, this.userStyles)
                 }
-
+		this.stylesOptionsSub
             }
             componentDidMount() {
                 if (this.props.stylesOptionsObs) {
-                    stylesOptionsSub = this.props.stylesOptionsObs.subscribe((x) => {
+                    this.stylesOptionsSub = this.props.stylesOptionsObs.subscribe((x) => {
                         this.setState({
                             styles: computeStyles(defaultStyles, x, this.userStyles)
                         })
@@ -38,8 +40,8 @@ export default function ${name}_Styles_Service(computeStyles, defaultStyles, sty
                 })
             }
             componentWillUnmount() {
-                if (stylesOptionsSub !== undefined) {
-                    stylesOptionsSub.unsubscribe()
+                if (this.stylesOptionsSub !== undefined) {
+                    this.stylesOptionsSub.unsubscribe()
                 }
             }
             render() {
@@ -50,19 +52,14 @@ export default function ${name}_Styles_Service(computeStyles, defaultStyles, sty
 				/>
             }
         }
-        $${name}_Styles_Service.propTypes = {
+        $${lowerName}_Styles_Service.propTypes = {
             stylesOptions: PropTypes.object,
             stylesOptionsObs: PropTypes.object,
         };
-        return $${name}_Styles_Service
+        return $${lowerName}_Styles_Service
     }
 } 
-    `
     
-    return component
+	`
+	return component
 }
-
-
-module.exports = getStylesService
-
-

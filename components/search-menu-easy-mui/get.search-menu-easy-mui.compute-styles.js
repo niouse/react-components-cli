@@ -1,7 +1,9 @@
-function getComputeStyles(name, lowerName){
-    
+
+module.exports = function (name, lowerName){
+
 var component = `
-export default function ${name}_computeStyles(defaultStyles, stylesOptions, userStyles) {
+
+export default function ${lowerName}_computeStyles(defaultStyles, stylesOptions, userStyles) {
     let styles = Object.assign({}, defaultStyles);
     // Overwrite styles according screen size or theme
     styles.title = {
@@ -23,10 +25,7 @@ export default function ${name}_computeStyles(defaultStyles, stylesOptions, user
     }
     return styles
 }
-`
-    return component
+
+	`
+	return component
 }
-
-module.exports = getComputeStyles
-
-

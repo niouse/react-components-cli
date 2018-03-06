@@ -18,14 +18,16 @@ import stylesOptions from "./styles/${lowerName}.styles-options.default.js";
 import computeStyles from "./styles/${lowerName}.compute-styles.js";
 import texts from "./text/${lowerName}.text.js";
 
-export default function ${name}(){
-	@Styles(computeStyles, stylesDefault, stylesOptions)
-	@Api()
-	@Texts(texts)
-	@Template()
-	class ${name}_Component {}
-	return ${name}_Component
-}  
+export default function ${name}(RaisedButton){
+	return (wrappedComponent)=>{
+		@Styles(computeStyles, stylesDefault, stylesOptions)
+		@Api()
+		@Texts(texts)
+		@Template(RaisedButton)
+		class ${name}_Component {}
+		return ${name}_Component
+	}
+}   
 `   
     return component
 }
